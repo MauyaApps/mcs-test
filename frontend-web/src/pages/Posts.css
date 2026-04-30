@@ -1,0 +1,158 @@
+.posts-page {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.posts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.posts-header h1 {
+  margin: 0;
+  color: #333;
+}
+
+.create-post-card,
+.post-card {
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.create-post-card h3 {
+  margin: 0 0 1rem 0;
+  color: #333;
+}
+
+.create-post-card textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  margin-bottom: 1rem;
+}
+
+.create-post-card textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.char-count {
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+.post-actions button {
+  padding: 0.75rem 1.5rem;
+  background: #FF6B35;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.post-actions button:hover:not(:disabled) {
+  background: #E85A2A;
+  transform: translateY(-2px);
+}
+
+.post-actions button:disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.no-posts {
+  text-align: center;
+  padding: 3rem;
+  background: white;
+  border-radius: 15px;
+  color: #9ca3af;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.post-header .avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #FF6B35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.post-author h4 {
+  margin: 0;
+  color: #333;
+}
+
+.post-time {
+  color: #9ca3af;
+  font-size: 0.85rem;
+}
+
+.post-content {
+  margin-bottom: 1rem;
+}
+
+.post-content p {
+  margin: 0;
+  color: #333;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.post-footer {
+  display: flex;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f3f4f6;
+}
+
+.btn-like,
+.btn-comment {
+  padding: 0.5rem 1rem;
+  background: #f3f4f6;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: #666;
+}
+
+.btn-like:hover,
+.btn-comment:hover {
+  background: #e5e7eb;
+}
+
+.btn-like.active {
+  background: #fee2e2;
+  color: #dc2626;
+}

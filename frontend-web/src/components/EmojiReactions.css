@@ -1,0 +1,163 @@
+/* === Контейнер реакций === */
+.emoji-reactions-container {
+  margin-top: 8px;
+}
+
+.reactions-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+/* === Пилюля реакции === */
+.reaction-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #f0f0f0;
+  border: 1.5px solid transparent;
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  line-height: 1;
+}
+
+.reaction-pill:hover {
+  background: #e8e8e8;
+  transform: scale(1.07);
+}
+
+.reaction-pill.active {
+  background: rgba(255, 107, 53, 0.12);
+  border-color: #FF6B35;
+}
+
+.reaction-emoji {
+  font-size: 17px;
+  line-height: 1;
+}
+
+.reaction-count {
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+  min-width: 14px;
+}
+
+.reaction-pill.active .reaction-count {
+  color: #FF6B35;
+}
+
+/* === Кнопка добавить реакцию === */
+.add-reaction-wrapper {
+  position: relative;
+}
+
+.add-reaction-btn {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: #f5f5f5;
+  border: 1.5px dashed #ccc;
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.18s;
+  line-height: 1;
+  color: #666;
+}
+
+.add-reaction-btn:hover {
+  background: #ebebeb;
+  border-color: #FF6B35;
+  color: #FF6B35;
+}
+
+.add-icon {
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: -1px;
+}
+
+/* === Эмодзи-пикер === */
+.emoji-picker {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 0;
+  z-index: 1000;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.14);
+  width: 300px;
+  overflow: hidden;
+  animation: pickerPop 0.18s ease;
+}
+
+@keyframes pickerPop {
+  from { opacity: 0; transform: scale(0.92) translateY(6px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.emoji-picker-tabs {
+  display: flex;
+  gap: 2px;
+  padding: 8px 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+  overflow-x: auto;
+}
+
+.emoji-tab {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  border-bottom: 2.5px solid transparent;
+  border-radius: 6px 6px 0 0;
+  padding: 5px 8px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.15s;
+  line-height: 1;
+}
+
+.emoji-tab:hover {
+  background: #f5f5f5;
+}
+
+.emoji-tab.active {
+  border-bottom-color: #FF6B35;
+  background: rgba(255,107,53,0.06);
+}
+
+.emoji-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 2px;
+  padding: 8px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.emoji-grid::-webkit-scrollbar { width: 4px; }
+.emoji-grid::-webkit-scrollbar-thumb { background: #ddd; border-radius: 4px; }
+
+.emoji-btn {
+  background: none;
+  border: none;
+  border-radius: 8px;
+  padding: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.12s, transform 0.12s;
+  line-height: 1;
+  text-align: center;
+}
+
+.emoji-btn:hover {
+  background: #f5f5f5;
+  transform: scale(1.22);
+}

@@ -1,0 +1,33 @@
+[2026-02-21T18:00:00.057Z] [ERROR] Delete expired stories error: {"error":"relation \"stories\" does not exist"}
+[2026-02-21T18:59:27.881Z] [ERROR] Failed to initialize connections: {"error":"Failed to connect to Redis"}
+[2026-02-21T18:59:27.892Z] [ERROR] Failed to initialize connections. Server not started.
+[2026-02-21T19:00:00.299Z] [ERROR] Delete expired stories error: {"error":"relation \"stories\" does not exist"}
+[2026-02-21T19:01:46.551Z] [ERROR] Failed to initialize connections: {"error":"Failed to connect to Redis"}
+[2026-02-21T19:01:46.556Z] [ERROR] Failed to initialize connections. Server not started.
+[2026-02-21T19:05:00.346Z] [ERROR] Failed to initialize connections: {"error":"Failed to connect to Redis"}
+[2026-02-21T19:05:00.353Z] [ERROR] Failed to initialize connections. Server not started.
+[2026-02-21T19:08:29.751Z] [ERROR] Failed to initialize connections: {"error":"Failed to connect to Redis"}
+[2026-02-21T19:08:29.757Z] [ERROR] Failed to initialize connections. Server not started.
+[2026-02-21T19:12:33.810Z] [ERROR] Failed to initialize connections: {"error":"Failed to connect to Redis"}
+[2026-02-21T19:12:33.816Z] [ERROR] Failed to initialize connections. Server not started.
+[2026-02-21T19:32:40.761Z] [ERROR] Failed to initialize connections: {"error":"Failed to connect to Redis"}
+[2026-02-21T19:32:40.768Z] [ERROR] Connections failed. Exiting.
+[2026-02-21T19:36:50.737Z] [ERROR] Failed to initialize connections: {"error":"Failed to connect to Redis"}
+[2026-02-21T19:36:50.742Z] [ERROR] Connections failed. Exiting.
+[2026-02-21T19:44:18.912Z] [ERROR] Failed to initialize connections: {"error":"Failed to connect to Redis"}
+[2026-02-21T19:44:18.920Z] [ERROR] Connections failed. Exiting.
+[2026-02-21T19:50:29.150Z] [ERROR] Failed to initialize connections: {"error":"Failed to connect to Redis"}
+[2026-02-21T19:50:29.157Z] [ERROR] Connections failed. Exiting.
+[2026-02-21T20:06:21.477Z] [ERROR] Failed to initialize connections: {"error":"Failed to connect to Redis"}
+[2026-02-21T20:06:21.483Z] [ERROR] Connections failed. Exiting.
+[2026-02-22T15:54:14.036Z] [ERROR] Failed to initialize connections: {"error":"Failed to connect to Redis"}
+[2026-02-22T15:54:14.068Z] [ERROR] Connections failed. Exiting.
+[2026-02-22T16:00:00.641Z] [ERROR] Delete expired stories error: {"error":"relation \"stories\" does not exist"}
+[2026-02-22T16:15:13.662Z] [ERROR] Failed to initialize connections: {"error":"Failed to connect to Redis"}
+[2026-02-22T16:15:13.688Z] [ERROR] Connections failed. Exiting.
+[2026-02-22T16:20:47.540Z] [ERROR] Failed to initialize connections: {"error":"Failed to connect to Redis"}
+[2026-02-22T16:20:47.567Z] [ERROR] Connections failed. Exiting.
+[2026-02-22T16:36:49.858Z] [ERROR] Failed to initialize connections: {"error":"Failed to connect to Redis"}
+[2026-02-22T16:36:49.882Z] [ERROR] Connections failed. Exiting.
+[2026-02-22T16:42:33.314Z] [ERROR] Failed to initialize connections: {"error":"Failed to connect to Redis"}
+[2026-02-22T16:42:33.339Z] [ERROR] Connections failed. Exiting.

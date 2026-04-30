@@ -1,0 +1,289 @@
+/* ===== ОБЁРТКА СТРАНИЦЫ ===== */
+.auth-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* ===== ЛЕВАЯ ПАНЕЛЬ С ОПИСАНИЕМ (только ПК) ===== */
+.auth-features-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem;
+  color: white;
+}
+
+.auth-brand-title {
+  font-size: 5rem;
+  font-weight: 900;
+  color: #FF6B35 !important;
+  margin: 0;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  user-select: none;
+  cursor: default;
+}
+
+.auth-brand-slogan {
+  font-size: 1.3rem;
+  opacity: 0.9;
+  margin: 0.5rem 0 3rem 0;
+}
+
+.auth-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.auth-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255,255,255,0.1);
+  padding: 1rem 1.5rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.2s;
+}
+
+.auth-feature-item:hover {
+  transform: translateX(5px);
+}
+
+.auth-feature-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.auth-feature-item h3 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #FF6B35;
+}
+
+.auth-feature-item p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* ===== ПРАВАЯ ЧАСТЬ С ФОРМОЙ ===== */
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  min-width: 480px;
+}
+
+.auth-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  padding: 3rem;
+  width: 100%;
+  max-width: 450px;
+  animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.auth-header h1 {
+  font-size: 3rem;
+  color: #FF6B35 !important;
+  margin: 0;
+  font-weight: 900;
+  user-select: none;
+  cursor: default;
+}
+
+.auth-header p {
+  color: #666;
+  margin: 0.5rem 0 0 0;
+  font-size: 1.1rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.form-group input {
+  padding: 0.75rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #FF6B35;
+}
+
+.form-group.checkbox {
+  flex-direction: row;
+  align-items: center;
+}
+
+.form-group.checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.form-group.checkbox input {
+  width: auto;
+  cursor: pointer;
+}
+
+.error-message {
+  padding: 1rem;
+  background: #fee;
+  border: 2px solid #fcc;
+  border-radius: 10px;
+  color: #c33;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.btn-primary {
+  padding: 1rem;
+  background: #FF6B35;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #E85A2A;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+}
+
+.btn-primary:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.auth-footer {
+  margin-top: 2rem;
+  text-align: center;
+  color: #666;
+}
+
+.auth-footer a {
+  color: #FF6B35;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
+@media screen and (max-width: 768px) {
+  .auth-page-wrapper {
+    flex-direction: column;
+  }
+
+  /* На телефоне скрываем левую панель */
+  .auth-features-panel {
+    display: none;
+  }
+
+  .auth-container {
+    min-width: unset;
+    width: 100%;
+    min-height: 100vh;
+    padding: 1.5rem;
+  }
+
+  .auth-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .auth-header h1 {
+    font-size: 2.5rem !important;
+  }
+
+  .form-group input {
+    height: 55px;
+    font-size: 16px !important;
+  }
+
+  .btn-primary {
+    height: 55px;
+    font-size: 1.1rem;
+  }
+}
+
+/* ===== ФИКС БЕЛОГО ТЕКСТА В ПОЛЯХ НА МОБИЛЬНЫХ ===== */
+.auth-card input,
+.auth-card input[type="text"],
+.auth-card input[type="password"],
+.auth-card input[type="email"],
+.auth-form input,
+.form-group input {
+  color: #333 !important;
+  background: white !important;
+  -webkit-text-fill-color: #333 !important;
+}
+
+.auth-card input::placeholder,
+.auth-form input::placeholder {
+  color: #aaa !important;
+  -webkit-text-fill-color: #aaa !important;
+}
+
+/* Автозаполнение браузера тоже белый фон */
+.auth-card input:-webkit-autofill,
+.auth-card input:-webkit-autofill:hover,
+.auth-card input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #333 !important;
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+  background-color: white !important;
+}
+
+.auth-card label,
+.form-group label {
+  color: #333 !important;
+}
+
+.auth-card,
+.auth-header p,
+.auth-footer {
+  color: #333 !important;
+}

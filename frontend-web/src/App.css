@@ -1,0 +1,277 @@
+/* --- БАЗОВЫЕ СТИЛИ (ПК) --- */
+:root {
+  --primary-color: #FF6B35;
+  --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --sat: env(safe-area-inset-top);
+  --sab: env(safe-area-inset-bottom);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg-gradient);
+  color: white;
+  overflow-x: hidden;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.App {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #FF6B35 !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  user-select: none;
+  cursor: default;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.hero {
+  max-width: 600px;
+  margin: 2rem 0;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.status {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  margin: 1rem 0;
+  backdrop-filter: blur(10px);
+  font-size: 0.9rem;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.feature {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+}
+
+.feature h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.cta {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: white;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* --- 📱 МОБИЛЬНАЯ АДАПТАЦИЯ (ШИРИНА ДО 768px) --- */
+@media screen and (max-width: 768px) {
+  .App-header {
+    padding: 15px !important;
+    padding-top: calc(30px + var(--sat)) !important;
+    justify-content: flex-start !important;
+  }
+
+  .logo h1 {
+    font-size: 3rem !important;
+  }
+
+  .hero h2 {
+    font-size: 1.6rem !important;
+  }
+
+  /* Схлопываем всё в один столбец */
+  .features {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .feature {
+    width: 100% !important;
+    padding: 1.2rem !important;
+    text-align: left;
+  }
+
+  /* Кнопки на всю ширину экрана */
+  .cta {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .cta a, .btn-primary, .btn-secondary {
+    width: 100% !important;
+    display: block !important;
+    text-align: center;
+    padding: 18px !important;
+  }
+
+  /* Убираем боковой скролл "белой дыры" */
+  body, html {
+    overflow-x: hidden !important;
+    width: 100vw !important;
+  }
+}
+
+footer {
+  margin-top: auto;
+  padding: 2rem 0;
+  opacity: 0.6;
+  font-size: 0.8rem;
+}
+
+@media screen and (max-width: 768px) {
+  /* 1. Даем кнопкам "дышать" и выводим их в топ */
+  .cta, .mobile-cta-group {
+    position: relative !important;
+    z-index: 9999 !important; /* Поверх всего */
+    pointer-events: auto !important; /* Разрешаем нажатия */
+    width: 100% !important;
+    padding: 10px 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+
+  .btn-primary, .btn-secondary, .btn-mobile {
+    -webkit-appearance: none; /* Убираем системные стили iOS */
+    touch-action: manipulation; /* Оптимизируем под тач */
+    cursor: pointer !important;
+    pointer-events: all !important;
+    position: relative;
+    z-index: 10000;
+  }
+
+  /* 2. Убираем "невидимый фон", который может перекрывать экран */
+  .App-header {
+    pointer-events: none; /* Пропускаем клики сквозь фон... */
+  }
+  
+  .logo, .hero, .status, .features, .cta {
+    pointer-events: auto; /* ...но разрешаем их на самих элементах */
+  }
+
+  /* 3. Фикс белой пустоты (еще раз, на всякий случай) */
+  * {
+    max-width: 100vw !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .cta-container {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 15px !important;
+    z-index: 999 !important; /* Выводим на передний план */
+    position: relative !important;
+    pointer-events: auto !important; /* Разрешаем клики */
+  }
+
+  .btn-primary, .btn-secondary {
+    cursor: pointer !important;
+    touch-action: manipulation !important; /* Убирает задержку клика на мобилках */
+    pointer-events: auto !important;
+    min-height: 55px; /* Удобный размер для пальца */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Контейнер страницы входа/регистрации */
+  .login-page, .register-page {
+    padding: 30px 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    min-height: 100vh !important;
+    background: var(--bg-gradient) !important;
+  }
+
+  /* Поля ввода - ГЛАВНЫЙ МОБИЛЬНЫЙ ФИКС */
+  input[type="text"], input[type="password"], input[type="email"] {
+    width: 100% !important;
+    height: 55px !important; /* Большая высота для пальца */
+    font-size: 16px !important; /* ЗАПРЕТ ЗУМА в iOS */
+    margin-bottom: 15px !important;
+    padding: 0 15px !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+    background: rgba(255,255,255,0.1) !important;
+    color: white !important;
+  }
+
+  /* Кнопка отправки формы */
+  .auth-button {
+    width: 100% !important;
+    height: 55px !important;
+    font-size: 1.1rem !important;
+    border-radius: 12px !important;
+    background: var(--primary-color) !important;
+    margin-top: 10px !important;
+  }
+
+  /* Ссылка "Нет аккаунта?" или "Забыли пароль?" */
+  .auth-link {
+    margin-top: 20px !important;
+    font-size: 0.9rem !important;
+  }
+}

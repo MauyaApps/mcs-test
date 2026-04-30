@@ -1,0 +1,125 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: mcs-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: mcs_db
+      POSTGRES_USER: mcs_user
+      POSTGRES_PASSWORD: mcs_secure_password_2024
+    ports:
+      - "0.0.0.0:5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mcs_user -d mcs_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      mcs-net:
+        ipv4_address: 172.20.0.2
+
+  redis:
+    image: redis:7-alpine
+    container_name: mcs-redis
+    restart: unless-stopped
+    command: redis-server --requirepass mcs_secure_password_2024
+    ports:
+      - "0.0.0.0:6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "mcs_secure_password_2024", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      mcs-net:
+        ipv4_address: 172.20.0.3
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: mcs-backend
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=development
+      - PORT=5000
+      - DATABASE_HOST=mcs-postgres
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=mcs_db
+      - DATABASE_USER=mcs_user
+      - DATABASE_PASSWORD=mcs_secure_password_2024
+      - REDIS_HOST=mcs-redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=mcs_secure_password_2024
+      - JWT_SECRET=mcs_jwt_super_secret_key_change_in_production_12345
+      - JWT_REFRESH_SECRET=mcs_jwt_refresh_super_secret_key_change_in_production_67890
+      - JWT_EXPIRE=15m
+      - JWT_REFRESH_EXPIRE=7d
+      - CORS_ORIGIN=http://localhost,http://localhost:5173,http://192.168.0.106,http://192.168.0.106:5173,http://127.0.0.1:5173
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      mcs-net:
+        ipv4_address: 172.20.0.4
+
+  frontend:
+    build:
+      context: ./frontend-web
+      dockerfile: Dockerfile
+    container_name: mcs-frontend
+    restart: unless-stopped
+    command: npm run dev -- --host 0.0.0.0
+    environment:
+      - VITE_API_URL=http://192.168.0.106
+      - VITE_WS_URL=ws://192.168.0.106
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend-web/src:/app/src
+    networks:
+      mcs-net:
+        ipv4_address: 172.20.0.5
+
+  nginx:
+    image: nginx:alpine
+    container_name: mcs-nginx
+    restart: unless-stopped
+    ports:
+      - "0.0.0.0:80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      mcs-net:
+        ipv4_address: 172.20.0.6
+
+  adminer:
+    image: adminer:latest
+    container_name: mcs-adminer
+    restart: unless-stopped
+    ports:
+      - "0.0.0.0:8080:8080"
+    networks:
+      mcs-net:
+        ipv4_address: 172.20.0.7
+
+networks:
+  mcs-net:
+    name: mcs-net
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  postgres_data:
+    driver: local

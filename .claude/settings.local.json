@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(npm audit:*)",
-      "Bash(npm install:*)",
-      "Bash(\"C:\\\\Program Files\\\\PostgreSQL\\\\15\\\\bin\\\\psql.exe\" -U mcs_user -h 127.0.0.1 -d mcs_db -f \"b:\\\\MCS\\\\database\\\\migrations\\\\001_folders.sql\")"
-    ]
-  }
-}
